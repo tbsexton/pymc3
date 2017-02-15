@@ -906,7 +906,8 @@ def tree_layout(graph):
     assert len(roots) == len(depth_positions[0])
     for root in roots:
         root_depth = depths[root]
-        positions[root] = (depth_positions[root_depth].pop(0), root_depth)
+        if depth_positions[root_depth]:
+            positions[root] = (depth_positions[root_depth].pop(0), root_depth)
         for node in graph.nodes():
             if node not in positions:
                 node_depth = depths[node]
